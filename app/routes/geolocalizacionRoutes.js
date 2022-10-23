@@ -1,10 +1,14 @@
 const { Router } = require("express");
 const validate=require('../middlewares/validate');
-const geojson=require('../schema/geojson');
-const userSchema=require('../schema/user');
-const userController = require('../controllers/user-controller');
+const geojsonModel=require('../models/geojson');
+const userSchema=require('../models/user');
+
 
 const router = Router();
+const {
+    validarJsonSchema
+ 
+}=require("../controllers/geolocalizacionController");
 
 
 
@@ -13,6 +17,6 @@ const router = Router();
 //Rutas GET
 //https://www.youtube.com/watch?v=9Pc8LGN4uug&ab_channel=productioncoder
 //https://ajv.js.org/guide/getting-started.html
-router.post('/register', validate(userSchema), userController.register);
+router.post('/validarJsonSchema', validate(geojsonModel), validarJsonSchema);
 
 module.exports = router;

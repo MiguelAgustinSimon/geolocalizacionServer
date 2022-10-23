@@ -4,7 +4,7 @@ var moment = require('moment');
 
 const Op = Sequelize.Op;
 
-const register = async (req, res) => {
+const validarJsonSchema = async (req, res) => {
     logger.info(`ProductScope: getProducts ok`);
     res.status(200).json("OK");
 }
@@ -12,5 +12,5 @@ const register = async (req, res) => {
 
 module.exports = {
     //Aca exporto los metodos
-    register
+    validarJsonSchema
   }
