@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const validate=require('../middlewares/validate');
-const geojsonModel=require('../models/geojson');
+const geojsonModel=require('../models/geojsonSchema');
 const userSchema=require('../models/user');
 
 
