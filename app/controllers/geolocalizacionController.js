@@ -5,8 +5,14 @@ var moment = require('moment');
 const Op = Sequelize.Op;
 
 const validarJsonSchema = async (req, res) => {
-    //logger.info(`ProductScope: getProducts ok`);
-    res.status(200).json("OK");
+    try {
+        //logger.info(`ProductScope: getProducts ok`);
+        return res.status(200).json("OK");
+    } catch (error) {
+        //console.log(error.message);
+    }
+       
+   
 }
 
 
