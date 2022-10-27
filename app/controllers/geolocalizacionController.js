@@ -6,9 +6,10 @@ const Op = Sequelize.Op;
 
 const validarJsonSchema = async (req, res) => {
     try {
-        //logger.info(`ProductScope: getProducts ok`);
+        logger.info(`gelocalizacionServer: validarJsonSchema ok`);
         return res.status(200).json("OK");
     } catch (error) {
+        logger.info(`gelocalizacionServer: validarJsonSchema falló: ${error.message}`);
         //console.log(error.message);
     }
        
