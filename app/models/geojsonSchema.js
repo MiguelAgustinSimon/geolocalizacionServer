@@ -37,14 +37,12 @@ const schema = {
                                 "type": "array",
                                 "default": [],
                                 "title": "A Schema",
+                                
                                 "items": {
-                                    "type": "array",
-                                    "title": "A Schema",
-                                    "items": {
-                                        "type": "number",
-                                        "title": "A Schema"
-                                    }
+                                    "type": "number",
+                                    "title": "A Schema"
                                 }
+                                
                                 
                             }
                         }
