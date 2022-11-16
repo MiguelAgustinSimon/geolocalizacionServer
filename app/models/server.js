@@ -2,8 +2,7 @@ const express = require("express");
 const db = require("../config/db.config.js");
 var cors = require("cors");
 require('express-async-errors');
-//const jwt=require("jsonwebtoken");
-
+const bodyParser=require('body-parser');
 
 class Server {
     constructor() {
@@ -17,7 +16,7 @@ class Server {
         }
     
         //Connect to database
-        //this.dbConnection();
+        this.dbConnection();
 
         //middlewares
         this.middlewares();
@@ -28,8 +27,7 @@ class Server {
 
     async dbConnection() {
         try {
-          await db.authenticate();
-          console.log("Database online");
+          await db();
         } catch (error) {
           throw new Error(error);
         }
@@ -41,11 +39,24 @@ class Server {
     this.app.use(cors());
 
     //Body lecture
+    // this.app.use(express.urlencoded({ extended: false }));
+    // this.app.use(express.json());
     const router = require('express').Router();
 
     this.app.use("/", router);
-    this.app.use(express.urlencoded({ extended: false }));
-    this.app.use(express.json());
+    
+    this.app.use(
+      bodyParser.json({
+        limit:'20mb'
+      })
+    )
+    this.app.use(
+      bodyParser.urlencoded({
+        limit:'20mb',
+        extended:true
+      })
+    )
+
     this.app.use(function(err, req, res, next) {
       res.status(err.status || 500);
       res.end();

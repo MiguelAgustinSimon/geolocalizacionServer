@@ -1,17 +1,33 @@
-// const Sequelize = require("sequelize");
+const mongoose=require('mongoose');
 
-// let dbConfig = {
-//   HOST: "syserrepar-pg-devqa-db-01.chbngkghfvhl.us-east-2.rds.amazonaws.com",
-//   USER: "dev_user",
-//   PASSWORD: "dev",
-//   DB: "pg_dev_01",
-//   dialect: "postgres",
-// };
+const DB_URI= `mongodb+srv://agustinsimon07:Agustin18Simon13@geolocalizacionbd.sgnnuya.mongodb.net/geolocalizacionDatabase`;
 
-// const db = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-//   host: dbConfig.HOST,
-//   dialect: dbConfig.dialect,
-//   logging: false,
-// });
+module.exports=()=>{
+    const connect=()=>{
+        mongoose.connect(
+            DB_URI,
+            {
+                keepAlive:true,
+                useNewUrlParser:true,
+                useUnifiedTopology:true
+            },
+            (err)=>{
+                if(err){
+                    console.log(`DB Error: ${err}`);
+                }
+                else{
+                    console.log(`Database Online`);
+                }
+            }
+        )
+    }
+    connect();
+}
 
-// module.exports = db;
+//Conectar a MongoDB: https://studio3t.com/knowledge-base/articles/connect-to-mongodb-atlas/
+
+//VER: https://www.youtube.com/watch?v=fZgJHJO81dw&ab_channel=FaztCode
+//Paso 1: https://www.youtube.com/watch?v=iN9wogzhjMU&ab_channel=LeiferMendez
+//Paso 2:https://www.youtube.com/watch?v=6FoKDYDJ4V8&ab_channel=LeiferMendez
+
+//mongodb+srv://agustinsimon07:Agustin18Simon13@geolocalizacionbd.sgnnuya.mongodb.net/test

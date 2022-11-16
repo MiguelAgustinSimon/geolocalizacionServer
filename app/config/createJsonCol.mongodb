@@ -1,0 +1,11 @@
+use('geolocalizacionDatabase')
+
+db.JsonCollection.insertOne({
+    nombre:'Test',
+    estado:true,
+    fecha:'10/10/2022',
+    hora:'11.05 am',
+    observacion:'validacion exitosa'
+}) 
+
+
