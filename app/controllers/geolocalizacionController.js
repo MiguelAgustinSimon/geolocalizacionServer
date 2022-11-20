@@ -5,12 +5,32 @@ var moment = require('moment');
 const Op = Sequelize.Op;
 
 const modeloJsonCol=require('../models/jsonCol');
+const categoriaSchema = require("../models/categoria");
 
 // ---------------------------------------------------- RUTAS GET--------------------------------------------------------------
+const getCategorias = async (req, res) => {
+    try {
+        //ordeno descendente por creado
+        const lista=await categoriaSchema.find({})
+        .sort({createdAt:-1})
+        .then((lista)=>{
+            res.status(200).json(lista);
+        })
+       .catch( (error)=>{
+            logger.error(`GeolocalizacionServer: getBitacora error: ${error.message}`);
+            res.json({error:error});
+        })
+    } catch (error) {
+        
+    }
+}
+
 const getBitacora = async (req, res) => {
     try {
         //ordeno descendente por creado
-        const lista=await modeloJsonCol.find({}).sort({createdAt:-1})
+        const lista=await modeloJsonCol.find({})
+        .populate('categorias') //hace referencia a 'categorias' de JsonCol
+        .sort({createdAt:-1})
         .then((lista)=>{
             logger.info(`GeolocalizacionServer: getBitacora ok`);
             res.status(200).json(lista);
@@ -22,8 +42,24 @@ const getBitacora = async (req, res) => {
     } catch (error) {
         
     }
-    
 }
+
+const obtenerNombreModelo= async (idModelo) => {
+    //sirve para devolver el product_id en getSubscriberSuscriptionCommProduct
+    let id=0;
+    await modelo.findOne({
+        where: {idModelo} 
+      })
+    .then( (data)=>{
+        console.log(data);
+            id=data.dataValues.nombre;
+    })
+    .catch( (error)=>{
+            console.log(`error: ${error}`);
+    });
+    return id;
+}
+
 
 
 // ---------------------------------------------------- RUTAS POST--------------------------------------------------------------
@@ -40,6 +76,7 @@ const validarJsonSchema = async (req, res) => {
 
 module.exports = {
     //Aca exporto los metodos
+    getCategorias,
     getBitacora,
     validarJsonSchema
   }

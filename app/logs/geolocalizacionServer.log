@@ -1,13 +1,42 @@
-[2022-11-16T19:03:08.802] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2022-11-16T19:03:08.803] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2022-11-16T19:03:33.737] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2022-11-16T19:03:33.737] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2022-11-16T19:08:33.391] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2022-11-16T19:08:33.391] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2022-11-16T19:08:50.581] [INFO] default - GeolocalizacionServer: getBitacora ok
-[2022-11-16T19:09:07.474] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2022-11-16T19:09:07.475] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2022-11-16T19:10:11.023] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2022-11-16T19:12:54.229] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2022-11-16T19:12:54.230] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2022-11-16T19:12:59.083] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2022-11-20T18:07:23.642] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:07:23.643] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:12:15.096] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:12:15.096] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:12:58.126] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:13:15.378] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:15:42.598] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:15:42.599] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:16:42.474] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:16:42.474] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:18:54.743] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:18:54.744] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:28:54.235] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2022-11-20T18:28:55.314] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2022-11-20T18:39:27.796] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:39:27.797] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:39:52.995] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:39:52.996] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:41:32.262] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:41:32.262] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:42:41.991] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:42:41.992] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:43:35.106] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2022-11-20T18:43:40.395] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2022-11-20T18:44:05.401] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2022-11-20T18:44:05.402] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2022-11-20T18:44:12.935] [ERROR] default - GeolocalizacionServer: getBitacora error: Cannot populate path `modeloSchemas` because it is not in your schema. Set the `strictPopulate` option to false to override.
+[2022-11-20T18:45:41.944] [ERROR] default - GeolocalizacionServer: getBitacora error: Schema hasn't been registered for model "Categorias".
+Use mongoose.model(name, schema)
+[2022-11-20T18:45:42.922] [ERROR] default - GeolocalizacionServer: getBitacora error: Schema hasn't been registered for model "Categorias".
+Use mongoose.model(name, schema)
+[2022-11-20T18:46:54.343] [ERROR] default - GeolocalizacionServer: getBitacora error: Schema hasn't been registered for model "Categorias".
+Use mongoose.model(name, schema)
+[2022-11-20T18:47:01.926] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2022-11-20T18:47:28.448] [ERROR] default - GeolocalizacionServer: getBitacora error: Cannot populate path `Categorias` because it is not in your schema. Set the `strictPopulate` option to false to override.
+[2022-11-20T18:50:08.291] [ERROR] default - GeolocalizacionServer: getBitacora error: Schema hasn't been registered for model "Categoria".
+Use mongoose.model(name, schema)
+[2022-11-20T18:50:20.906] [ERROR] default - GeolocalizacionServer: getBitacora error: Schema hasn't been registered for model "categoria".
+Use mongoose.model(name, schema)
+[2022-11-20T18:50:22.103] [ERROR] default - GeolocalizacionServer: getBitacora error: Schema hasn't been registered for model "categoria".
+Use mongoose.model(name, schema)
+[2022-11-20T18:51:55.557] [INFO] default - GeolocalizacionServer: getBitacora ok

@@ -6,7 +6,8 @@ const verificarEsquemas=require('../middlewares/validate');
 const router = Router();
 const {
     getBitacora,
-    validarJsonSchema
+    validarJsonSchema,
+    getCategorias
 }=require("../controllers/geolocalizacionController");
 
 
@@ -16,6 +17,7 @@ const {
 //Rutas GET
 //https://www.youtube.com/watch?v=9Pc8LGN4uug&ab_channel=productioncoder
 //https://ajv.js.org/guide/getting-started.html
+router.get('/getCategorias', getCategorias);
 router.get('/getBitacora', getBitacora);
 
 

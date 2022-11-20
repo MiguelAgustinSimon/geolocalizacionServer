@@ -2,7 +2,12 @@ const { strict } = require('assert');
 const mongoose=require('mongoose');
 const { version } = require('os');
 
+
 const jsonSchema=new mongoose.Schema({
+    categorias: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'categoriaSchema'
+    }],
     nombre:{
         type:String,
         required:true

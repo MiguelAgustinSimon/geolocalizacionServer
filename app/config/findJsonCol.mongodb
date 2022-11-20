@@ -1,5 +1,5 @@
 use('geolocalizacionDatabase')
 
 
-db.JsonCollection.find()
+db.categoriaSchema.find()
 
