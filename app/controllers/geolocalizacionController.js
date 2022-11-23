@@ -44,23 +44,6 @@ const getBitacora = async (req, res) => {
     }
 }
 
-const obtenerNombreModelo= async (idModelo) => {
-    //sirve para devolver el product_id en getSubscriberSuscriptionCommProduct
-    let id=0;
-    await modelo.findOne({
-        where: {idModelo} 
-      })
-    .then( (data)=>{
-        console.log(data);
-            id=data.dataValues.nombre;
-    })
-    .catch( (error)=>{
-            console.log(`error: ${error}`);
-    });
-    return id;
-}
-
-
 
 // ---------------------------------------------------- RUTAS POST--------------------------------------------------------------
 const validarJsonSchema = async (req, res) => {

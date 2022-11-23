@@ -23,6 +23,6 @@ router.get('/getBitacora', getBitacora);
 
 
 //Rutas POST
-router.post('/validarJsonSchema', verificarEsquemas, validarJsonSchema);
+router.post('/validarJsonSchema/:nombreArchivo?', verificarEsquemas, validarJsonSchema);
 
 module.exports = router;

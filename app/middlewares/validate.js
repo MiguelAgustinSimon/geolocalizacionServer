@@ -27,6 +27,8 @@ const Op = Sequelize.Op;
 
 const VerificarEsquemas =async (req, res, next) => {
   try {
+    const {nombreArchivo}=req.params;
+
     let erroresGral=`El documento debe contener AL MENOS UNO de los siguientes elementos: `;
     let errorEsquema1;
     let errorEsquema2;
@@ -55,7 +57,7 @@ const VerificarEsquemas =async (req, res, next) => {
             erroresGral=`${erroresGral} ${errorEsquema1[0].message} | ${errorEsquema2[0].message} | ${errorEsquema3[0].message} | ${errorEsquema4[0].message}`
             
             //637a69aff875420b2141e408 ID JSON MODEL
-            GuardarDatosBitacora('637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
+            GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
             
             res.status(400).json(erroresGral);
             
@@ -69,35 +71,21 @@ const VerificarEsquemas =async (req, res, next) => {
     }
 };
 
-const GuardarDatosBitacora = async (categoriaId,nombre,estado,observacion,req, res) => {
+const GuardarDatosBitacora = async (nombreArchivo,categoriaId,nombre,estado,observacion,req, res) => {
   const categorias= await categoriaSchema.findById(categoriaId);
-  console.log(categorias);
-
-
   const data= new jsonCol({
+    nombreArchivo,
     categorias:categorias._id,
     nombre,
     estado,
     observacion
   })
   try {
-  console.log(data);
-  const savedJson=await data.save();
-  //categoria.jsonSchema=categoria.jsonSchema.concat(savedJson._id);
-    // await categoria.save();
-
+    console.log(data);
+    const savedJson=await data.save();
   } catch (error) {
     console.log(`Error: ${error}`);
   }
-  // jsonSchema.create(data,(err,docs)=>{
-  //     if(!err){
-  //       console.log({data:docs});
-       
-  //     }else{
-  //       console.log(`Error: ${err}`);
-
-  //     }
-  // })
 }
 
 module.exports=VerificarEsquemas;

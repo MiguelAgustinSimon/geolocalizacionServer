@@ -4,6 +4,10 @@ const { version } = require('os');
 
 
 const jsonSchema=new mongoose.Schema({
+    nombreArchivo:{
+        type:String,
+        required:true
+    },
     categorias: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'categoriaSchema'
