@@ -39,23 +39,22 @@ class Server {
     this.app.use(cors());
 
     //Body lecture
-    // this.app.use(express.urlencoded({ extended: false }));
-    // this.app.use(express.json());
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
     const router = require('express').Router();
-
     this.app.use("/", router);
-    
-    this.app.use(
-      bodyParser.json({
-        limit:'20mb'
-      })
-    )
-    this.app.use(
-      bodyParser.urlencoded({
-        limit:'20mb',
-        extended:true
-      })
-    )
+   
+    // this.app.use(
+    //   bodyParser.json({
+    //     limit:'20mb'
+    //   })
+    // )
+    // this.app.use(
+    //   bodyParser.urlencoded({
+    //     limit:'20mb',
+    //     extended:true
+    //   })
+    // )
 
     this.app.use(function(err, req, res, next) {
       res.status(err.status || 500);

@@ -28,7 +28,6 @@ const Op = Sequelize.Op;
 const VerificarEsquemas =async (req, res, next) => {
   try {
     const {nombreArchivo}=req.params;
-
     let erroresGral=`El documento debe contener AL MENOS UNO de los siguientes elementos: `;
     let errorEsquema1;
     let errorEsquema2;
