@@ -12,7 +12,6 @@ const Op = Sequelize.Op;
 
 
  const validateDto= (ajvValidate)=>{
-  //  obtenerPromedioLatitud=(arrJson:Json[]):number=>{
   return (req, res, next) => {
     const valid = ajvValidate(req.body);
     if (!valid){

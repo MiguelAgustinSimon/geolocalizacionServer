@@ -7,7 +7,6 @@ const schema = {
     "title": "Root Schema",
     "required": [
         "type",
-        "crs",
         "features"
     ],
     "properties": {

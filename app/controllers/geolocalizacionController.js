@@ -27,10 +27,23 @@ const getCategorias = async (req, res) => {
 
 const getBitacora = async (req, res) => {
     try {
-        //ordeno descendente por creado
-        const lista=await modeloJsonCol.find({})
+        const pageAsNumber=Number.parseInt(req.query.page);
+        const limitAsNumber=Number.parseInt(req.query.limit);
+        
+        let page=0;
+        let limit=3;
+        if(!Number.isNaN(pageAsNumber)&& pageAsNumber>0){
+            page=pageAsNumber;
+        }
+    
+        if(!Number.isNaN(limitAsNumber) && limitAsNumber>0 && limitAsNumber<10){
+            limit=limitAsNumber;
+        }
+        
+        //Hago un FIND porque viene de mongoose
+        const lista=await modeloJsonCol.find().skip(page).limit(limit)
         .populate('categorias') //hace referencia a 'categorias' de JsonCol
-        .sort({createdAt:-1})
+        .sort({createdAt:-1})//ordeno descendente por creado.
         .then((lista)=>{
             logger.info(`GeolocalizacionServer: getBitacora ok`);
             res.status(200).json(lista);

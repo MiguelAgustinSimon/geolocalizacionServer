@@ -1,7 +1,7 @@
 const { strict } = require('assert');
 const mongoose=require('mongoose');
 const { version } = require('os');
-
+const mongoosePaginate=require('mongoose-paginate-v2');
 
 const jsonSchema=new mongoose.Schema({
     nombreArchivo:{
@@ -28,5 +28,5 @@ const jsonSchema=new mongoose.Schema({
 {versionKey:false,
 timestamps:true
 })
-
+jsonSchema.plugin(mongoosePaginate);
 module.exports=mongoose.model('jsonSchema',jsonSchema);
