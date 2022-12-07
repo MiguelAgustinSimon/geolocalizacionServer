@@ -1,5 +1,7 @@
 const ajvInstance=require('./ajv-instance');
 //https://www.jsonschema.net/app/schemas/140646
+//sirve para test.json
+
 const schema = {
     "type": "object",
         "default": {},

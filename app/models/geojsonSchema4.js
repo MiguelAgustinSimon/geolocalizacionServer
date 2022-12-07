@@ -1,5 +1,6 @@
 const ajvInstance=require('./ajv-instance');
 //https://www.jsonschema.net/app/schemas/140646
+//sirve para peajes - aerodromos
 
 const schema = {
     "type": "object",

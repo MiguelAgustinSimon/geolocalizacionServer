@@ -59,9 +59,12 @@ const VerificarEsquemas =async (req, res, next) => {
             
             res.status(400).json(erroresGral);
             
-          }
-        }
-      }
+          }else{entro(`valid4`)}
+        }else{entro(`valid3`)}
+      }else{entro(`valid2`)}
+    }
+    else{
+      entro(`valid`)
     }
     next();
     } catch (error) {
@@ -86,5 +89,8 @@ const GuardarDatosBitacora = async (nombreArchivo,categoriaId,nombre,estado,obse
   }
 }
 
+const entro=(donde)=>{
+  console.log(`entro ${donde}`);
+}
 module.exports=VerificarEsquemas;
 
