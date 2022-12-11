@@ -39,8 +39,14 @@ class Server {
     this.app.use(cors());
 
     //Body lecture
-    this.app.use(bodyParser.urlencoded({ extended: false }));
-    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.json({limit: '50mb'}));
+
+    this.app.use(bodyParser.urlencoded({ 
+      limit: '50mb',
+      extended: true,
+      parameterLimit:50000 
+    }));
+
     const router = require('express').Router();
     this.app.use("/", router);
    
