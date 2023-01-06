@@ -44,12 +44,12 @@ class Server {
     this.app.use(bodyParser.urlencoded({ 
       limit: '50mb',
       extended: true,
-      parameterLimit:50000 
+      parameterLimit:10000 
     }));
 
     const router = require('express').Router();
     this.app.use("/", router);
-   
+
     // this.app.use(
     //   bodyParser.json({
     //     limit:'20mb'
