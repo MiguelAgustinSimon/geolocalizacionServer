@@ -26,12 +26,12 @@ const Op = Sequelize.Op;
 
 const VerificarTesting =async (req, res, next) => {
   try{
+    
     const valid = geojson(req.body);
     if (!valid){
       errorEsquema = geojson.errors;
       ajv.es(errorEsquema); //pasamos los errores a idioma español
       res.status(400).json(errorEsquema[0].message);
-
     }
     next();
   } catch (error) {
