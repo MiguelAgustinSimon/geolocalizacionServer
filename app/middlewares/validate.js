@@ -26,7 +26,10 @@ const Op = Sequelize.Op;
 
 const VerificarTesting =async (req, res, next) => {
   try{
-    
+    let bodyString=JSON.stringify(req.body);
+    console.log(bodyString);
+    //console.log(req.body.toString());
+
     const valid = geojson(req.body);
     if (!valid){
       errorEsquema = geojson.errors;
