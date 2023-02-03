@@ -1,34 +1,29 @@
 const ajvInstance=require('./ajv-instance');
 
-// const ISO8601UTCRegex = '^\-?[0-9][0-9][.]\\d{2,}[,]\\s?\-?[0-9][0-9][.]\\d{2,}$';
-  // const typeISO8601UTC = {
-  //   "type": "number",
-  //   "pattern": ISO8601UTCRegex.toString(),
-  //   "errorMessage": "must be string of format. Got ${0}",
-  // };
 
 
-  // ajvInstance.addType('mongoid', {
-  //   compile: function () {
-  //     return function (data) {
-  //       const re = /^\-?[0-9][0-9][.]\\d{2,}[,]\\s?\-?[0-9][0-9][.]\\d{2,}$/i
-  //       return re.test(data)
-  //     }
-  //   }
-  // })
-
-  ajvInstance.addKeyword('stringTypeChecker', {
-    modifying: true,
-    schema: false, // keyword value is not used, can be true
-    valid: true, // always validates as true
-    validate: function(data, dataPath, parentData, parentDataProperty){
+  ajvInstance.addKeyword('validarDecimales', {
+    errors: true,
+    validate: function validate(data,schema){
+      console.log(`DATA: ${data}`);
+      console.log(`SCHEMA: ${schema}`);
       //const regex = new RegExp('^\-?[0-9][0-9][.]\\d{2,}[,]\\s?\-?[0-9][0-9][.]\\d{2,}$');
+      validate.errors = [];
       const regex = new RegExp('^\-?[0-9][0-9][.]\\d{2,}$');
-      console.log(data);
-      console.log(regex.test(data));
-     
+      //console.log(data);
+      console.log(`VALIDACION: ${regex.test(schema)}`);
+      if(regex.test(schema)!=true){
+        console.log(`falseeee`);
+        validate.errors.push({
+          keyword: 'validarDecimales',
+        
+          message: `Debe tener al menos 2 números post coma`
+        });
+      }
     }
   });
+
+
   
 const schema = {
     type: 'object',
@@ -41,7 +36,9 @@ const schema = {
           coordinates: { type: "array",
             items: {type: "array",
               //items: {"type": "number", "multipleOf": 0.000000000000001, "stringTypeChecker":true},
-              items: {"type": "number", "multipleOf": 0.000000000000001, "stringTypeChecker":true},
+              items: {
+                "type": "number", "validarDecimales":true
+              },
               errorMessage:{
                 type:'Coordinates debe ser array numérico'
               }
