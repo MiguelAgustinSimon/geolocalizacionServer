@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const verificarEsquemas=require('../middlewares/validate');
-const verificarTesting=require('../middlewares/validate');
+//const verificarTesting=require('../middlewares/validate');
+
 
 
 
@@ -25,6 +26,6 @@ router.get('/getBitacora', getBitacora);
 
 //Rutas POST
 router.post('/validarJsonSchema/:nombreArchivo?', verificarEsquemas, validarJsonSchema);
-router.post('/validarJsonSchemaa', verificarTesting, validarJsonSchema);
+//router.post('/test', verificarTesting, validarJsonSchema);
 
 module.exports = router;

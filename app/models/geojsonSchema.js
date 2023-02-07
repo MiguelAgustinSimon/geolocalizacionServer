@@ -1,56 +1,54 @@
 const ajvInstance=require('./ajv-instance');
-//https://www.jsonschema.net/app/schemas/140646
-const schema = {
-        "type": "object",
-        "default": {},
-        "title": "Root Schema",
-        "required": [
-            "geometry"
-        ],
-        "properties": {
-            "geometry": {
-                "type": "object",
-                "default": {},
-                "title": "The geometry Schema",
-                "required": [
-                    "type",
-                    "coordinates"
-                ],
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The type Schema",
-                        "examples": [
-                            "MultiPolygon"
-                        ]
-                    },
-                    "coordinates": {
-                        "type": "array",
-                        "default": [],
-                        "title": "The coordinates Schema",
-                        "items": {
-                            "type": "array",
-                            "default": [],
-                            "title": "A Schema",
-                            "items": {
-                                "type": "array",
-                                "default": [],
-                                "title": "A Schema",
-                                
-                                "items": {
-                                    "type": "number",
-                                    "title": "A Schema"
-                                }
-                                
-                                
-                            }
-                        }
-                    }
-                }
-            }
-        }    
-  };
+
+
   
+const schema = {
+    type: 'object',
+    additionalProperties:true, 
+    required:['geometry'],
+    properties: {
+      //geometry: { "type": "number", "multipleOf": 0.000000000000001 }
+      geometry: { "type": "object" ,"required": ["coordinates"],
+        properties: {
+          coordinates: { type: "array",
+            items: {type: "array",
+              //items: {"type": "number", "multipleOf": 0.000000000000001, "stringTypeChecker":true},
+              items: {"type": "number", "validarDecimales":true},
+              errorMessage:{
+                type:'Coordinates debe ser array numérico'
+              }
+            }
+          }
+        },
+      }
+    }
+  };
+
+
+  // const schema = {
+  //   type: 'object',
+  //   additionalProperties:true, 
+  //   required:['geometry'],
+  //   properties: {
+  //     //geometry: { "type": "number", "multipleOf": 0.000000000000001 }
+  //     geometry: { "type": "object" ,"required": ["coordinates"],
+  //       properties: {
+  //         coordinates: { type: "array",
+  //           items: {type: "array",
+  //             items: {
+  //               "type": "string",
+  //               "pattern": '^\-?[0-9][0-9][.]\\d{2,}[,]\\s?\-?[0-9][0-9][.]\\d{2,}$'
+  //             },
+  //             errorMessage:{
+  //               type:'Coordinates debe ser array numérico'
+  //             }
+  //           }
+  //         }
+  //       },
+  //     }
+  //   }
+  // };
+
+
   
 module.exports = ajvInstance.compile(schema);

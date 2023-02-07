@@ -1,6 +1,6 @@
 const ajvInstance=require('./ajv-instance');
 //https://www.jsonschema.net/app/schemas/140646
-//sirve para peajes 
+//sirve para aerodromos
 
 const schema = {
     "type": "object",
@@ -30,7 +30,6 @@ const schema = {
                 "title": "A Schema",
                 "required": [
                     "type",
-                    "id",
                     "geometry"
                 ],
                 "properties": {
@@ -69,14 +68,7 @@ const schema = {
                             },
                             "coordinates": {
                                 "type": "array",
-                                "default": [],
-                                "title": "The coordinates Schema",
-                                "items": {
-                                    "type": "array",
-                                    "title": "A Schema",
-                                    "items": {"type": "number", "validarDecimales":true}
-                                },
-                                
+                                "items": {"type": "number", "validarDecimales":true}
                             }
                         }
                     }

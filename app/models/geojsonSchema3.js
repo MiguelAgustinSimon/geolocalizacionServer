@@ -3,267 +3,225 @@ const ajvInstance=require('./ajv-instance');
 //sirve para BarriosPopulares
 
 const schema = {
-    "definitions": {
-        "Welcome7": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "crs": {
-                    "$ref": "#/definitions/CRS"
-                },
-                "features": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Feature"
-                    }
-                }
+        "type": "object",
+        "default": {},
+        "title": "Root Schema",
+        "required": [
+            "type",
+            "features"
+        ],
+        "properties": {
+            "type": {
+                "type": "string",
+                "default": "",
+                "title": "The type Schema"
             },
-            "required": [
-                "crs",
-                "features",
-                "type"
-            ],
-            "title": "Welcome7"
-        },
-        "CRS": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "properties": {
-                    "$ref": "#/definitions/CRSProperties"
-                }
-            },
-            "required": [
-                "properties",
-                "type"
-            ],
-            "title": "CRS"
-        },
-        "CRSProperties": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "name"
-            ],
-            "title": "CRSProperties"
-        },
-        "Feature": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "$ref": "#/definitions/FeatureType"
-                },
-                "properties": {
-                    "$ref": "#/definitions/FeatureProperties"
-                },
-                "geometry": {
-                    "$ref": "#/definitions/Geometry"
-                }
-            },
-            "required": [
-                "geometry",
-                "properties",
-                "type"
-            ],
-            "title": "Feature"
-        },
-        "Geometry": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "$ref": "#/definitions/GeometryType"
-                },
-                "coordinates": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "type": "array",
-                            "items": {
-                                "type": "array",
-                                "items": {
-                                    "type": "number"
+            "features": {
+                "type": "array",
+                "default": [],
+                "title": "The features Schema",
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "title": "A Schema",
+                    "required": [
+                        "type",
+                        "properties",
+                        "geometry"
+                    ],
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The type Schema"
+                        },
+                        "properties": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The properties Schema",
+                            "properties": {
+                                "renabap_id": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The renabap_id Schema",
+                                    "examples": [
+                                        27
+                                    ]
+                                },
+                                "nombre_barrio": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The nombre_barrio Schema",
+                                    "examples": [
+                                        "Monterrey II"
+                                    ]
+                                },
+                                "provincia": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The provincia Schema",
+                                    "examples": [
+                                        "Buenos Aires"
+                                    ]
+                                },
+                                "departamento": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The departamento Schema",
+                                    "examples": [
+                                        "Pilar"
+                                    ]
+                                },
+                                "localidad": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The localidad Schema",
+                                    "examples": [
+                                        "Presidente Derqui"
+                                    ]
+                                },
+                                "cantidad_familias_aproximada": {
+                                    "type": "number",
+                                    "default": 0.0,
+                                    "title": "The cantidad_familias_aproximada Schema",
+                                    "examples": [
+                                        44.0
+                                    ]
+                                },
+                                "cantidad_viviendas_aproximadas": {
+                                    "type": "number",
+                                    "default": 0.0,
+                                    "title": "The cantidad_viviendas_aproximadas Schema",
+                                    "examples": [
+                                        40.0
+                                    ]
+                                },
+                                "decada_de_creacion": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The decada_de_creacion Schema",
+                                    "examples": [
+                                        "Década 2000"
+                                    ]
+                                },
+                                "anio_de_creacion": {
+                                    "type": "null",
+                                    "default": null,
+                                    "title": "The anio_de_creacion Schema",
+                                    "examples": [
+                                        null
+                                    ]
+                                },
+                                "energia_electrica": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The energia_electrica Schema",
+                                    "examples": [
+                                        "Conexión regular a la red con medidor domiciliario con consumo limitado"
+                                    ]
+                                },
+                                "efluentes_cloacales": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The efluentes_cloacales Schema",
+                                    "examples": [
+                                        "Desagüe a cámara séptica y pozo ciego"
+                                    ]
+                                },
+                                "agua_corriente": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The agua_corriente Schema",
+                                    "examples": [
+                                        "Bomba de agua de pozo domiciliaria"
+                                    ]
+                                },
+                                "cocina": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The cocina Schema",
+                                    "examples": [
+                                        "Gas en garrafa"
+                                    ]
+                                },
+                                "calefaccion": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The calefaccion Schema",
+                                    "examples": [
+                                        "Otro / vacío"
+                                    ]
+                                },
+                                "situacion_dominial": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The situacion_dominial Schema",
+                                    "examples": [
+                                        "Ninguna seguridad en la tenencia"
+                                    ]
+                                },
+                                "clasificacion_barrio": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The clasificacion_barrio Schema",
+                                    "examples": [
+                                        "Asentamiento"
+                                    ]
+                                },
+                                "superficie_m2": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The superficie_m2 Schema",
+                                    "examples": [
+                                        5265
+                                    ]
+                                }
+                            }
+                        },
+                        "geometry": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The geometry Schema",
+                            "required": [
+                                "type",
+                                "coordinates"
+                            ],
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The type Schema",
+                                    "examples": [
+                                        "MultiPolygon"
+                                    ]
+                                },
+                                "coordinates": {
+                                    "type": "array",
+                                    "default": [],
+                                    "title": "The coordinates Schema",
+                                    "items": {
+                                        "type": "array",
+                                        "default": [],
+                                        "title": "A Schema",
+                                        "items": {
+                                            "type": "array",
+                                            "default": [],
+                                            "title": "A Schema",
+                                            "items": {
+                                                "type": "array",
+                                                "title": "A Schema",
+                                                "items": {"type": "number", "validarDecimales":true}
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
-            "title": "Geometry"
-        },
-        "FeatureProperties": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "renabap_id": {
-                    "type": "integer"
-                },
-                "nombre_barrio": {
-                    "type": "string"
-                },
-                "provincia": {
-                    "$ref": "#/definitions/Provincia"
-                },
-                "departamento": {
-                    "$ref": "#/definitions/Departamento"
-                },
-                "localidad": {
-                    "type": "string"
-                },
-                "cantidad_familias_aproximada": {
-                    "type": "number"
-                },
-                "cantidad_viviendas_aproximadas": {
-                    "type": "number"
-                },
-                "decada_de_creacion": {
-                    "type": "string"
-                },
-                "anio_de_creacion": {
-                    "type": "null"
-                },
-                "energia_electrica": {
-                    "type": "string"
-                },
-                "efluentes_cloacales": {
-                    "$ref": "#/definitions/EfluentesCloacales"
-                },
-                "agua_corriente": {
-                    "$ref": "#/definitions/AguaCorriente"
-                },
-                "cocina": {
-                    "$ref": "#/definitions/Cocina"
-                },
-                "calefaccion": {
-                    "$ref": "#/definitions/Calefaccion"
-                },
-                "situacion_dominial": {
-                    "$ref": "#/definitions/SituacionDominial"
-                },
-                "clasificacion_barrio": {
-                    "$ref": "#/definitions/ClasificacionBarrio"
-                },
-                "superficie_m2": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "agua_corriente",
-                "anio_de_creacion",
-                "calefaccion",
-                "cantidad_familias_aproximada",
-                "cantidad_viviendas_aproximadas",
-                "clasificacion_barrio",
-                "cocina",
-                "decada_de_creacion",
-                "departamento",
-                "efluentes_cloacales",
-                "energia_electrica",
-                "localidad",
-                "nombre_barrio",
-                "provincia",
-                "renabap_id",
-                "situacion_dominial",
-                "superficie_m2"
-            ],
-            "title": "FeatureProperties"
-        },
-        "GeometryType": {
-            "type": "string",
-            "enum": [
-                "MultiPolygon"
-            ],
-            "title": "GeometryType"
-        },
-        "AguaCorriente": {
-            "type": "string",
-            "enum": [
-                "Bomba de agua de pozo domiciliaria",
-                "Conexión irregular a la red de agua",
-                "Conexión formal a la red de agua con factura"
-            ],
-            "title": "AguaCorriente"
-        },
-        "Calefaccion": {
-            "type": "string",
-            "enum": [
-                "Otro / vacío",
-                "Leña o carbón",
-                "Energía eléctrica"
-            ],
-            "title": "Calefaccion"
-        },
-        "ClasificacionBarrio": {
-            "type": "string",
-            "enum": [
-                "Asentamiento",
-                "Villa"
-            ],
-            "title": "ClasificacionBarrio"
-        },
-        "Cocina": {
-            "type": "string",
-            "enum": [
-                "Gas en garrafa"
-            ],
-            "title": "Cocina"
-        },
-        "Departamento": {
-            "type": "string",
-            "enum": [
-                "Pilar",
-                "La Plata"
-            ],
-            "title": "Departamento"
-        },
-        "EfluentesCloacales": {
-            "type": "string",
-            "enum": [
-                "Desagüe a cámara séptica y pozo ciego",
-                "Desagüe sólo a pozo negro/ciego u hoyo"
-            ],
-            "title": "EfluentesCloacales"
-        },
-        "Provincia": {
-            "type": "string",
-            "enum": [
-                "Buenos Aires"
-            ],
-            "title": "Provincia"
-        },
-        "SituacionDominial": {
-            "type": "string",
-            "enum": [
-                "Ninguna seguridad en la tenencia",
-                "Otro tipo de seguridad en la tenencia"
-            ],
-            "title": "SituacionDominial"
-        },
-        "FeatureType": {
-            "type": "string",
-            "enum": [
-                "Feature"
-            ],
-            "title": "FeatureType"
+            }
         }
-    }
+    
 }
 
 module.exports = ajvInstance.compile(schema);
