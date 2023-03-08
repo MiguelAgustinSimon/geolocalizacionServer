@@ -57,51 +57,8 @@ const VerificarEsquemas =async (req, res, next) => {
       res.status(400).json(erroresGral);
 
      //637a69aff875420b2141e408 ID JSON MODEL
-      //await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
+      await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
     }
-
-
-
-
-    // const valid = geojsonSchema(req.body);
-    // if (!valid){
-    //   errorEsquema1 = geojsonSchema.errors;
-    //   ajv.es(errorEsquema1); //pasamos los errores a idioma español
-
-    //   const valid2 = geojsonSchema2(req.body);
-    //   if (!valid2){
-    //     errorEsquema2 = geojsonSchema2.errors;
-    //     ajv.es(errorEsquema2); //pasamos los errores a idioma español
-
-    //     const valid3 = geojsonSchema3(req.body);
-    //     if (!valid3){
-    //       errorEsquema3 = geojsonSchema3.errors;
-    //       ajv.es(errorEsquema3); //pasamos los errores a idioma español
-    //       const valid4 = geojsonSchema4(req.body);
-    //       if (!valid4){
-    //         errorEsquema4 = geojsonSchema4.errors;
-    //         ajv.es(errorEsquema4); //pasamos los errores a idioma español
-
-    //         const valid5 = geojsonSchema5(req.body);
-    //         if (!valid5){
-    //           errorEsquema5 = geojsonSchema5.errors;
-    //           ajv.es(errorEsquema5); //pasamos los errores a idioma español
-    //           console.log(errorEsquema5[0].message);
-    //   //       erroresGral=`${erroresGral} ${errorEsquema1[0].message} | ${errorEsquema2[0].message} | ${errorEsquema3[0].message} | ${errorEsquema4[0].message}`
-            
-    //   //       //637a69aff875420b2141e408 ID JSON MODEL
-    //   //       //GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
-            
-    //   //       res.status(400).json(erroresGral);
-            
-    //        }else{entro(`valid5`)}
-    //       }else{entro(`valid4`)}
-    //      }else{entro(`valid3`)}
-    //   }else{entro(`valid2`)}
-    // }
-    // else{
-    //   entro(`valid`)
-    // }
     next();
     
 };
