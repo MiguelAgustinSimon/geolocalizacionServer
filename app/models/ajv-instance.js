@@ -12,10 +12,10 @@ ajvInstance.addKeyword('validarDecimales', {
       //const regex = new RegExp('^\-?[0-9][0-9][.]\\d{2,}[,]\\s?\-?[0-9][0-9][.]\\d{2,}$');
       validate.errors = [];
       const regex = new RegExp('^\-?[0-9][0-9][.]\\d{2,}$');
-      // console.log(schema);
-      // console.log(`VALIDACION: ${regex.test(schema)}`);
+       //console.log(schema);
+       //console.log(`VALIDACION: ${regex.test(schema)}`);
 
-      if(regex.test(schema)!=true){
+      if(regex.test(schema)==false){
         validate.errors.push({
           keyword: 'validarDecimales',
           typeof:'numberValidate',

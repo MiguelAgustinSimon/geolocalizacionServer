@@ -43,7 +43,7 @@ const VerificarEsquemas =async (req, res, next) => {
       await verificarEsquema(geojsonSchema5(req.body),5);
     }
 
-    console.log(`es valido?? - ${esValido}`);
+    //console.log(`es valido?? - ${esValido}`);
     if(esValido!=true){
       //erroresGral=`${erroresGral} ${errorEsquema1[0].message} | ${errorEsquema2[0].message} | ${errorEsquema3[0].message} | ${errorEsquema4[0].message}`
       
@@ -57,7 +57,7 @@ const VerificarEsquemas =async (req, res, next) => {
       res.status(400).json(erroresGral);
 
      //637a69aff875420b2141e408 ID JSON MODEL
-      await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
+      //await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
     }
 
 
@@ -109,7 +109,7 @@ const VerificarEsquemas =async (req, res, next) => {
 const verificarEsquema=async(esquema,queEsquema)=>{
   //vemos si es valido
 
-  console.log(`llego verificarEsquema: ${esquema} / ${queEsquema}`);
+  //console.log(`llego verificarEsquema: ${esquema} / ${queEsquema}`);
   if(esquema){
     return (esValido=true);
   }else{
