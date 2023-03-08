@@ -209,8 +209,7 @@ const schema = {
                                             "title": "A Schema",
                                             "items": {
                                                 "type": "array",
-                                                "title": "A Schema",
-                                                "items": {"type": "number", "validarDecimales":true}
+                                                "title": "A Schema"
                                             }
                                         }
                                     }

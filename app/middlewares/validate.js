@@ -15,23 +15,6 @@ let errorNumberValidate=false; //(esta en ajv-instance)
 let textoErrorNumberValidate="";
 
 
-
-
-// const VerificarTesting =async (req, res, next) => {
-
-//     let bodyString=JSON.stringify(req.body);
-//     const valid = geojson(req.body);
-
-//     if (!valid){
-//       errorEsquema = geojson.errors;
-//       ajv.es(errorEsquema); //pasamos los errores a idioma español
-//       res.status(400).json(errorEsquema[0].message);
-//     }
-//     next();
-  
-// }
-
-
 const VerificarEsquemas =async (req, res, next) => {
 
     const {nombreArchivo}=req.params;
@@ -39,26 +22,26 @@ const VerificarEsquemas =async (req, res, next) => {
     textoErrorNumberValidate="";
     esValido=false;
     let erroresGral=`El documento debe contener AL MENOS UNO de los siguientes elementos: `;
-    let errorEsquema1;
-    let errorEsquema2;
-    let errorEsquema3;
-    let errorEsquema4;
-    let errorEsquema5;
 
+   
     //verificamos el primer esquema
     await verificarEsquema(geojsonSchema(req.body),1);
-    
-    //verificamos el segundo esquema
-    await verificarEsquema(geojsonSchema2(req.body),2);
-
-    //verificamos el tercer esquema
-    await verificarEsquema(geojsonSchema3(req.body),3);
-
-    //verificamos el cuarto esquema
-    await verificarEsquema(geojsonSchema4(req.body),4);
-
-    //verificamos el quinto esquema
-    await verificarEsquema(geojsonSchema5(req.body),5);
+    if(esValido==false){
+        //verificamos el segundo esquema
+        await verificarEsquema(geojsonSchema2(req.body),2);
+    }
+    if(esValido==false){
+      //verificamos el tercer esquema
+      await verificarEsquema(geojsonSchema3(req.body),3);
+    }
+    if(esValido==false){
+      //verificamos el cuarto esquema
+      await verificarEsquema(geojsonSchema4(req.body),4);
+    }
+    if(esValido==false){
+      //verificamos el quinto esquema
+      await verificarEsquema(geojsonSchema5(req.body),5);
+    }
 
     console.log(`es valido?? - ${esValido}`);
     if(esValido!=true){
@@ -76,6 +59,8 @@ const VerificarEsquemas =async (req, res, next) => {
      //637a69aff875420b2141e408 ID JSON MODEL
       await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
     }
+
+
 
 
     // const valid = geojsonSchema(req.body);
@@ -124,7 +109,7 @@ const VerificarEsquemas =async (req, res, next) => {
 const verificarEsquema=async(esquema,queEsquema)=>{
   //vemos si es valido
 
-  //console.log(`llego verificarEsquema: ${esquema} / ${queEsquema}`);
+  console.log(`llego verificarEsquema: ${esquema} / ${queEsquema}`);
   if(esquema){
     return (esValido=true);
   }else{
