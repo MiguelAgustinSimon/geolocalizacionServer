@@ -1,7 +1,14 @@
-[2023-03-13T13:15:48.552] [INFO] default - GeolocalizacionServer: getBitacora ok
-[2023-03-13T13:15:58.279] [INFO] default - GeolocalizacionServer: getBitacora ok
-[2023-03-13T13:16:06.502] [INFO] default - GeolocalizacionServer: getBitacora ok
-[2023-03-13T13:17:14.119] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-03-13T13:17:17.789] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-03-13T13:17:17.791] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2023-03-13T13:34:01.954] [INFO] default - GeolocalizacionServer: getBitacora ok
+[2023-04-07T14:00:06.726] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:00:06.727] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2023-04-07T14:00:43.985] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:00:53.045] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:00:53.045] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2023-04-07T14:01:01.273] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:01:01.273] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2023-04-07T14:01:07.592] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:01:07.592] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2023-04-07T14:01:16.757] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:01:30.551] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:01:30.552] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2023-04-07T14:01:36.235] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-07T14:01:36.235] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client

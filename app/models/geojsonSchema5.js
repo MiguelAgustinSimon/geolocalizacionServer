@@ -68,7 +68,7 @@ const schema = {
                             },
                             "coordinates": {
                                 "type": "array",
-                                "items": {"type": "number", "validarDecimales":true}
+                                items: {"type": "number", "validarVacio":true,"validarDecimales":true}                                          
                             }
                         }
                     }

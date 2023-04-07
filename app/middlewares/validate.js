@@ -13,7 +13,7 @@ const Op = Sequelize.Op;
 let esValido=false;
 let errorNumberValidate=false; //(esta en ajv-instance)
 let textoErrorNumberValidate="";
-
+let errores=[];
 
 const VerificarEsquemas =async (req, res, next) => {
 
@@ -21,8 +21,8 @@ const VerificarEsquemas =async (req, res, next) => {
     errorNumberValidate=false; 
     textoErrorNumberValidate="";
     esValido=false;
-    let erroresGral=`El documento debe contener AL MENOS UNO de los siguientes elementos: `;
-
+    let erroresGral;
+    
    
     //verificamos el primer esquema
     await verificarEsquema(geojsonSchema(req.body),1);
@@ -43,22 +43,32 @@ const VerificarEsquemas =async (req, res, next) => {
       await verificarEsquema(geojsonSchema5(req.body),5);
     }
 
-    //console.log(`es valido?? - ${esValido}`);
-    if(esValido!=true){
-      //erroresGral=`${erroresGral} ${errorEsquema1[0].message} | ${errorEsquema2[0].message} | ${errorEsquema3[0].message} | ${errorEsquema4[0].message}`
-      
-      //verificamos si el error es del nro post coma y mostramos el mensaje
-      if(errorNumberValidate==true)
-      {
-        erroresGral=textoErrorNumberValidate;
-      }else{
-        erroresGral=`${erroresGral} ${this.errorEsquema1} | ${this.errorEsquema2} | ${this.errorEsquema3} | ${this.errorEsquema4} | ${this.errorEsquema5}`;
-      }
+    if(errorNumberValidate==true){      //verificamos si el error es del nro post coma y mostramos el mensaje 
+      erroresGral=textoErrorNumberValidate;
+      errores.length=0;
       res.status(400).json(erroresGral);
 
-     //637a69aff875420b2141e408 ID JSON MODEL
-      await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
+      //637a69aff875420b2141e408 ID JSON MODEL
+        //await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
     }
+    else{
+      if(esValido!=true){
+          errores.forEach(pos=>{
+            if(erroresGral!=undefined){
+              erroresGral=`${erroresGral} | ${pos}`
+            }else{
+              erroresGral=`${pos}`;
+            }
+          });
+          erroresGral=`El documento debe contener AL MENOS UNO de los siguientes elementos: ${erroresGral}`;
+          errores.length=0;
+        
+        res.status(400).json(erroresGral);
+
+      //637a69aff875420b2141e408 ID JSON MODEL
+        //await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
+    }
+  }
     next();
     
 };
@@ -95,6 +105,7 @@ const agregarMensajeError=async(queEsquema)=>{
       case 1:
         ajv.es(geojsonSchema.errors); //pasamos los errores a idioma español
         this.errorEsquema1=`${geojsonSchema.errors[0].message}`;
+        await verificarErrorRepetido(this.errorEsquema1);
         if(geojsonSchema.errors[0].typeof!=null){//verificamos si el error es de los nros post coma
           errorNumberValidate=true;
           textoErrorNumberValidate=this.errorEsquema1;
@@ -102,42 +113,54 @@ const agregarMensajeError=async(queEsquema)=>{
       break;
 
       case 2:
-        ajv.es(geojsonSchema2.errors); //pasamos los errores a idioma español
+        ajv.es(geojsonSchema2.errors);
         this.errorEsquema2=`${geojsonSchema2.errors[0].message}`;
-        if(geojsonSchema2.errors[0].typeof!=null){//verificamos si el error es de los nros post coma
+        await verificarErrorRepetido(this.errorEsquema2);
+        if(geojsonSchema2.errors[0].typeof!=null){
           errorNumberValidate=true;
           textoErrorNumberValidate=this.errorEsquema2;
         }
       break;
 
       case 3:
-        ajv.es(geojsonSchema3.errors); //pasamos los errores a idioma español
+        ajv.es(geojsonSchema3.errors);
         this.errorEsquema3=`${geojsonSchema3.errors[0].message}`;
-        if(geojsonSchema3.errors[0].typeof!=null){//verificamos si el error es de los nros post coma
+        await verificarErrorRepetido(this.errorEsquema3);
+        if(geojsonSchema3.errors[0].typeof!=null){
           errorNumberValidate=true;
           textoErrorNumberValidate=this.errorEsquema3;
         }
       break;
 
       case 4:
-        ajv.es(geojsonSchema4.errors); //pasamos los errores a idioma español
+        ajv.es(geojsonSchema4.errors); 
         this.errorEsquema4=`${geojsonSchema4.errors[0].message}`;
-        if(geojsonSchema4.errors[0].typeof!=null){//verificamos si el error es de los nros post coma
+        await verificarErrorRepetido(this.errorEsquema4);
+        if(geojsonSchema4.errors[0].typeof!=null){
           errorNumberValidate=true;
           textoErrorNumberValidate=this.errorEsquema4;
         }
       break;
 
       case 5:
-        ajv.es(geojsonSchema5.errors); //pasamos los errores a idioma español
+        ajv.es(geojsonSchema5.errors); 
         this.errorEsquema5=`${geojsonSchema5.errors[0].message}`;
-        if(geojsonSchema5.errors[0].typeof!=null){//verificamos si el error es de los nros post coma
+        await verificarErrorRepetido(this.errorEsquema5);
+        if(geojsonSchema5.errors[0].typeof!=null){
           errorNumberValidate=true;
           textoErrorNumberValidate=this.errorEsquema5;
         }
       break;
     }
 }
+
+const verificarErrorRepetido=async(mensaje) =>{
+  // Verifica si el error ya está en el array
+  if (!errores.includes(mensaje)){
+    errores.push(mensaje);
+  }
+}
+
 
 const GuardarDatosBitacora = async (nombreArchivo,categoriaId,nombre,estado,observacion,req, res) => {
   const categorias= await categoriaSchema.findById(categoriaId);
@@ -154,10 +177,6 @@ const GuardarDatosBitacora = async (nombreArchivo,categoriaId,nombre,estado,obse
   } catch (error) {
     console.log(`Error: ${error}`);
   }
-}
-
-const entro=(donde)=>{
-  console.log(`entro ${donde}`);
 }
 
 
