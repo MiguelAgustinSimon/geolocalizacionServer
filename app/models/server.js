@@ -6,7 +6,6 @@ const bodyParser=require('body-parser');
 
 class Server {
     constructor() {
-      
         this.app = express();
     
         if (process.env.STAGE == "PROD") {
