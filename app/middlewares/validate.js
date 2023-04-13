@@ -49,7 +49,7 @@ const VerificarEsquemas =async (req, res, next) => {
       res.status(400).json(erroresGral);
 
       //637a69aff875420b2141e408 ID JSON MODEL
-        //await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
+      await GuardarDatosBitacora(nombreArchivo,'637a9dc865c8913868af208b', 'VerificarEsquemas',false,erroresGral);
     }
     else{
       if(esValido!=true){
