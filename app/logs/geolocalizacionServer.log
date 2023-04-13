@@ -1,14 +1,4 @@
-[2023-04-07T14:00:06.726] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:00:06.727] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2023-04-07T14:00:43.985] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:00:53.045] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:00:53.045] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2023-04-07T14:01:01.273] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:01:01.273] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2023-04-07T14:01:07.592] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:01:07.592] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2023-04-07T14:01:16.757] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:01:30.551] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:01:30.552] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
-[2023-04-07T14:01:36.235] [INFO] default - gelocalizacionServer: validarJsonSchema ok
-[2023-04-07T14:01:36.235] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
+[2023-04-13T13:14:51.145] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-13T13:15:25.029] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-13T13:15:37.765] [INFO] default - gelocalizacionServer: validarJsonSchema ok
+[2023-04-13T13:15:37.766] [INFO] default - gelocalizacionServer: validarJsonSchema falló: Cannot set headers after they are sent to the client
